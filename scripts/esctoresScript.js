@@ -111,28 +111,28 @@ function checkHoras() {
     }
 }
 
-function getHoras(){
-    if(localStorage.getItem(CHECK_SALA) == "checked"){
+function getHoras() {
+    if (localStorage.getItem(CHECK_SALA) == "checked") {
         document.getElementById(CHECK_SALA).checked = true;
-    }else{
+    } else {
         document.getElementById(CHECK_SALA).checked = false;
     }
 
-    if(localStorage.getItem(CHECK_QUARTO) == "checked"){
+    if (localStorage.getItem(CHECK_QUARTO) == "checked") {
         document.getElementById(CHECK_QUARTO).checked = true;
-    }else{
+    } else {
         document.getElementById(CHECK_QUARTO).checked = false;
     }
 
-    if(localStorage.getItem(CHECK_COZINHA) == "checked"){
+    if (localStorage.getItem(CHECK_COZINHA) == "checked") {
         document.getElementById(CHECK_COZINHA).checked = true;
-    }else{
+    } else {
         document.getElementById(CHECK_COZINHA).checked = false;
     }
 
-    if(localStorage.getItem(CHECK_WC) == "checked"){
+    if (localStorage.getItem(CHECK_WC) == "checked") {
         document.getElementById(CHECK_WC).checked = true;
-    }else{
+    } else {
         document.getElementById(CHECK_WC).checked = false;
     }
 }
@@ -206,36 +206,35 @@ function setEstoresStatus() {
 }
 
 function getEstoresStatus() {
-        if (localStorage.getItem("statusEstoresSala") == "ABERTOS") {
-            document.getElementById("statusEstoresSala").innerHTML = 'ABERTOS';
-            document.getElementById("abrirBtnSala").disabled = true;
-        }else{
-            document.getElementById("statusEstoresSala").innerHTML = 'FECHADOS';
-            document.getElementById("fecharBtnSala").disabled = true;
-        }
-    
-        if (localStorage.getItem("statusEstoresQuarto") == "ABERTOS") {
-            document.getElementById("statusEstoresQuarto").innerHTML = 'ABERTOS';
-            document.getElementById("abrirBtnQuarto").disabled = true;
-        }else{
-            document.getElementById("statusEstoresQuarto").innerHTML = 'FECHADOS';
-            document.getElementById("fecharBtnQuarto").disabled = true;
-        }
-    
-        if (localStorage.getItem("statusEstoresCozinha") == "ABERTOS") {
-            document.getElementById("statusEstoresCozinha").innerHTML = 'ABERTOS';
-            document.getElementById("abrirBtnCozinha").disabled = true;
-        }else{
-            document.getElementById("statusEstoresCozinha").innerHTML = 'FECHADOS';
-            document.getElementById("fecharBtnCozinha").disabled = true;
-        }
-    
-        if (localStorage.getItem("statusEstoresWC") == "ABERTOS") {
-            document.getElementById("statusEstoresWC").innerHTML = 'ABERTOS';
-            document.getElementById("abrirBtnWC").disabled = true;
-        }else{
-            document.getElementById("statusEstoresWC").innerHTML = 'FECHADOS';
-            document.getElementById("fecharBtnWC").disabled = true;
-        }
-      
+    if (localStorage.getItem("statusEstoresSala") == "ABERTOS") {
+        document.getElementById("statusEstoresSala").innerHTML = 'ABERTOS';
+        document.getElementById("abrirBtnSala").disabled = true;
+    } else {
+        document.getElementById("statusEstoresSala").innerHTML = 'FECHADOS';
+        document.getElementById("fecharBtnSala").disabled = true;
+    }
+
+    if (localStorage.getItem("statusEstoresQuarto") == "ABERTOS") {
+        document.getElementById("statusEstoresQuarto").innerHTML = 'ABERTOS';
+        document.getElementById("abrirBtnQuarto").disabled = true;
+    } else {
+        document.getElementById("statusEstoresQuarto").innerHTML = 'FECHADOS';
+        document.getElementById("fecharBtnQuarto").disabled = true;
+    }
+
+    if (localStorage.getItem("statusEstoresCozinha") == "ABERTOS") {
+        document.getElementById("statusEstoresCozinha").innerHTML = 'ABERTOS';
+        document.getElementById("abrirBtnCozinha").disabled = true;
+    } else {
+        document.getElementById("statusEstoresCozinha").innerHTML = 'FECHADOS';
+        document.getElementById("fecharBtnCozinha").disabled = true;
+    }
+
+    if (localStorage.getItem("statusEstoresWC") == "ABERTOS") {
+        document.getElementById("statusEstoresWC").innerHTML = 'ABERTOS';
+        document.getElementById("abrirBtnWC").disabled = true;
+    } else {
+        document.getElementById("statusEstoresWC").innerHTML = 'FECHADOS';
+        document.getElementById("fecharBtnWC").disabled = true;
+    }
 }
