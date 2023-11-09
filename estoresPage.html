@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/estores.css">
+    <title>Smart Home: Gestor dos Estores</title>
+</head>
+
+<body>
+    <div id="ecra">
+        <div id="backBtnPosition">
+            <button id="backBtn" onclick="window.location.href='index.html'">Voltar</button>
+        </div>
+        <h1>Smart Home</h1>
+        <div id="estoresGrid">
+
+            <div>
+                <h3>SALA</h3>
+            </div>
+            <div> Status: <span id="statusEstoresSala"></span> <br>
+                <button class="abrirBtn">ABRIR</button> <br> <button class="fecharBtn">FECHAR</button>
+            </div>
+            <div><input type="checkbox" id="checkboxSala" checked>Abrir/Fechar automaticamente  <br>
+                <div id="horasSala" hidden>
+                    Hora Fecho:<input type="time"> <br>
+                    Hora Abertura:<input type="time">
+                </div>
+
+            </div>
+            <div>
+                <h3>QUARTO</h3>
+            </div>
+            <div>Status: <span id="statusEstoresQuarto"></span> <br>
+                <button class="abrirBtn">ABRIR</button> <br><button class="fecharBtn">FECHAR</button>
+            </div>
+            <div><input type="checkbox" id="checkboxQuarto" checked> Abrir/Fechar automaticamente  <br>
+                <div id="horasQuarto" hidden>
+                    Hora Fecho:<input type="time"> <br>
+                    Hora Abertura:<input type="time">
+                </div>
+            </div>
+            <div>
+                <h3>COZINHA</h3>
+            </div>
+            <div>Status: <span id="statusEstoresCozinha"></span> <br>
+                <button class="abrirBtn">ABRIR</button> <br><button class="fecharBtn">FECHAR</button>
+            </div>
+            <div><input type="checkbox" id="checkboxCozinha" checked>Abrir/Fechar automaticamente  <br>
+                <div id="horasCozinha" hidden>
+                    Hora Fecho:<input type="time"> <br>automaticamente 
+                    Hora Abertura:<input type="time">
+                </div>
+            </div>
+            <div>
+                <h3>WC</h3>
+            </div>
+            <div>Status: <span id="statusEstoresWC"></span> <br>
+                <button class="abrirBtn">ABRIR</button> <br><button class="fecharBtn">FECHAR</button>
+            </div>
+            <div><input type="checkbox" id="checkboxWC" checked>Abrir/Fechar automaticamente<br>
+                <div id="horasWC" hidden>
+                    Hora Fecho:<input type="time"> <br>
+                    Hora Abertura:<input type="time">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+<script src="scripts/esctoresScript.js"></script>
+</html>

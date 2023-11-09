@@ -1,0 +1,36 @@
+*{
+    font-family: "DejaVu Serif";
+}
+
+#ecra{
+    width: 1280px;
+    height: 720px;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#estoresGrid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto auto;
+}
+
+.abrirBtn{
+    margin-top: 5px;
+    width: 100px;
+}
+
+.fecharBtn{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100px;
+}
+
+#backBtnPosition{
+    float: right;
+}
+
+#h1{
+    text-align: center;
+}

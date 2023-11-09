@@ -1,0 +1,83 @@
+
+*{
+    font-family: "DejaVu Serif";
+}
+
+#ecra{
+    width: 1280px;
+    height: 780px;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h1{
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 70px;
+}
+
+#btnPosition{
+    display: grid;
+    justify-content: center;
+}
+
+.buttons{
+    margin-top: 10px;
+    height: 50px;
+    width: 350px;
+    font-size: 20px;
+}
+
+#backBtnPosition{
+    float: right;
+}
+
+#backBtn{
+    height: 70px;
+    width: 70px;
+}
+
+#despensaArea{
+    border: 2px solid black;
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    column-gap: 0;
+}
+
+#opcoesArea{
+    border: 2px solid black;
+    font-size: 13px;
+    width: 300px;
+    height: 130px;
+    margin-top: -300px;
+    margin-left: 200px;
+}
+
+h4{
+    margin-left: 10px;
+}
+
+#appleImg{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.produto{
+    width: 100px;
+    height: 100px;
+    text-align: center;
+}
+
+#mostrarArea{
+    border: 2px solid black;
+    font-size: 13px;
+    width: 300px;
+    height: 130px;
+    margin-top: -300px;
+    margin-left: 200px;
+}

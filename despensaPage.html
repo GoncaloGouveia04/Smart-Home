@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" id="main">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Smart Home: Gestor da Despensa</title>
+</head>
+
+<body>
+    <div id="ecra">
+        <div id="backBtnPosition">
+            <button id="backBtn" onclick="window.location.href='index.html'">Voltar</button>
+        </div>
+        <h1>Despensa</h1>
+        <div id="despensaArea">
+        </div>
+        <div id="opcoesArea">
+            <form>
+                <h4>Ordenar por:</h4>
+                <input type="radio" name="opcoes" value="dataValidade">
+                <label for="dataValidade">Data de Validade</label>
+                <br>
+                <input type="radio" name="opcoes" value="quantidade">
+                <label for="quantidade">Quantidade</label>
+                <br>
+            </form>
+        </div>
+        <div id="mostrarArea">
+            <form>
+                <h4>Mostrar:</h4>
+                <input type="radio" name="mostrar" id="produtosDespensa">
+                <label for="produtosDespensa">Mostrar produtos da Despensa</label>
+                <br>
+                <input type="radio" name="mostrar" id="produtosFrigorifico">
+                <label for="produtosFrigorifico">Mostrar produtos do Frigorífico</label>
+                <br>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="scripts/mainPage.js"></script>
+
+</html>

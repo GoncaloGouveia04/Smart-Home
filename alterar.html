@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <title>Controle de Temperatura</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Velocidade</h1>
+        <div class="speed-container">
+            <input type="range" id="speed-slider" min="1" max="5" step="1" value="2">
+            <div id="speed-display"></div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Controle de Temperatura</h1>
+        <div class="temperature-container">
+            <input type="range" id="temperature-slider" min="15" max="30" step="1" value="25">
+            <div id="temperature-display"></div>
+        </div>
+    </div>
+    <div class="guardarBtnPosition">
+        <button id="guardarBtn">Guardar</button>
+    </div>
+    <script src="scripts/acScript.js"></script>
+</body>
+</html>
