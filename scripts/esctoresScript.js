@@ -205,10 +205,37 @@ function setEstoresStatus() {
     }
 }
 
-
-function getEstoresStatus(){
-    document.getElementById("statusEstoresSala").innerHTML=localStorage.getItem("statusEstoresSala");
-    document.getElementById("statusEstoresQuarto").innerHTML=localStorage.getItem("statusEstoresQuarto");
-    document.getElementById("statusEstoresCozinha").innerHTML=localStorage.getItem("statusEstoresCozinha");
-    document.getElementById("statusEstoresWC").innerHTML=localStorage.getItem("statusEstoresWC");
+function getEstoresStatus() {
+        if (localStorage.getItem("statusEstoresSala") == "ABERTOS") {
+            document.getElementById("statusEstoresSala").innerHTML = 'ABERTOS';
+            document.getElementById("abrirBtnSala").disabled = true;
+        }else{
+            document.getElementById("statusEstoresSala").innerHTML = 'FECHADOS';
+            document.getElementById("fecharBtnSala").disabled = true;
+        }
+    
+        if (localStorage.getItem("statusEstoresQuarto") == "ABERTOS") {
+            document.getElementById("statusEstoresQuarto").innerHTML = 'ABERTOS';
+            document.getElementById("abrirBtnQuarto").disabled = true;
+        }else{
+            document.getElementById("statusEstoresQuarto").innerHTML = 'FECHADOS';
+            document.getElementById("fecharBtnQuarto").disabled = true;
+        }
+    
+        if (localStorage.getItem("statusEstoresCozinha") == "ABERTOS") {
+            document.getElementById("statusEstoresCozinha").innerHTML = 'ABERTOS';
+            document.getElementById("abrirBtnCozinha").disabled = true;
+        }else{
+            document.getElementById("statusEstoresCozinha").innerHTML = 'FECHADOS';
+            document.getElementById("fecharBtnCozinha").disabled = true;
+        }
+    
+        if (localStorage.getItem("statusEstoresWC") == "ABERTOS") {
+            document.getElementById("statusEstoresWC").innerHTML = 'ABERTOS';
+            document.getElementById("abrirBtnWC").disabled = true;
+        }else{
+            document.getElementById("statusEstoresWC").innerHTML = 'FECHADOS';
+            document.getElementById("fecharBtnWC").disabled = true;
+        }
+      
 }
