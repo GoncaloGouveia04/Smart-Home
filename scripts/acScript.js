@@ -14,7 +14,6 @@ window.addEventListener("load", principal);
 
 function principal() {
     loadOptions();
-
 }
 
 function loadOptions(){
@@ -31,7 +30,6 @@ function loadOptions(){
 temperatureSlider.addEventListener('input', updateTemperatureDisplay);
 speedSlider.addEventListener('input', updateSpeedDisplay);
 guardarBtb.addEventListener("click", saveOptions);
-
 
 function updateTemperatureDisplay() {
     const temperatureValue = temperatureSlider.value;
