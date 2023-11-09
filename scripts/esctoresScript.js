@@ -21,58 +21,14 @@ window.addEventListener("load", principal);
 function principal() {
 
     setInterval(function time() {
-        if (document.getElementById(CHECK_SALA).checked == true) {
-            localStorage.setItem("checkboxSala", "checked");
-        } else {
-            localStorage.setItem("checkboxSala", "unchecked");
-        }
-
-        if (document.getElementById(CHECK_QUARTO).checked == true) {
-            localStorage.setItem("checkboxQuarto", "checked");
-        } else {
-            localStorage.setItem("checkboxQuarto", "unchecked");
-        }
-
-        if (document.getElementById(CHECK_COZINHA).checked == true) {
-            localStorage.setItem("checkboxCozinha", "checked");
-        } else {
-            localStorage.setItem("checkboxCozinha", "unchecked");
-        }
-
-        if (document.getElementById(CHECK_WC).checked == true) {
-            localStorage.setItem("checkboxWC", "checked");
-        } else {
-            localStorage.setItem("checkboxWC", "unchecked");
-        }
-
-        if (localStorage.getItem("checkboxSala") == "checked") {
-            document.getElementById(DIV_HORAS_SALA).style.visibility = 'visible';
-        } else {
-            document.getElementById(DIV_HORAS_SALA).style.visibility = 'hidden';
-        }
-
-        if (localStorage.getItem("checkboxQuarto") == "checked") {
-            document.getElementById(DIV_HORAS_QUARTO).style.visibility = 'visible';
-        } else {
-            document.getElementById(DIV_HORAS_QUARTO).style.visibility = 'hidden';
-        }
-
-        if (localStorage.getItem("checkboxCozinha") == "checked") {
-            document.getElementById(DIV_HORAS_COZINHA).style.visibility = 'visible';
-        } else {
-            document.getElementById(DIV_HORAS_COZINHA).style.visibility = 'hidden';
-        }
-
-        if (localStorage.getItem("checkboxWC") == "checked") {
-            document.getElementById(DIV_HORAS_WC).style.visibility = 'visible';
-        } else {
-            document.getElementById(DIV_HORAS_WC).style.visibility = 'hidden';
-        }
-
-        
+        checkHoras();
+        setEstoresStatus();
     }, 100)
 
     defineEventHandlers();
+
+    getHoras();
+    getEstoresStatus();
 }
 
 function defineEventHandlers() {
@@ -105,6 +61,81 @@ function defineEventHandlers() {
     });
 }
 
+function checkHoras() {
+    if (document.getElementById(CHECK_SALA).checked == true) {
+        localStorage.setItem("checkboxSala", "checked");
+    } else {
+        localStorage.setItem("checkboxSala", "unchecked");
+    }
+
+    if (document.getElementById(CHECK_QUARTO).checked == true) {
+        localStorage.setItem("checkboxQuarto", "checked");
+    } else {
+        localStorage.setItem("checkboxQuarto", "unchecked");
+    }
+
+    if (document.getElementById(CHECK_COZINHA).checked == true) {
+        localStorage.setItem("checkboxCozinha", "checked");
+    } else {
+        localStorage.setItem("checkboxCozinha", "unchecked");
+    }
+
+    if (document.getElementById(CHECK_WC).checked == true) {
+        localStorage.setItem("checkboxWC", "checked");
+    } else {
+        localStorage.setItem("checkboxWC", "unchecked");
+    }
+
+    if (localStorage.getItem("checkboxSala") == "checked") {
+        document.getElementById(DIV_HORAS_SALA).style.visibility = 'visible';
+    } else {
+        document.getElementById(DIV_HORAS_SALA).style.visibility = 'hidden';
+    }
+
+    if (localStorage.getItem("checkboxQuarto") == "checked") {
+        document.getElementById(DIV_HORAS_QUARTO).style.visibility = 'visible';
+    } else {
+        document.getElementById(DIV_HORAS_QUARTO).style.visibility = 'hidden';
+    }
+
+    if (localStorage.getItem("checkboxCozinha") == "checked") {
+        document.getElementById(DIV_HORAS_COZINHA).style.visibility = 'visible';
+    } else {
+        document.getElementById(DIV_HORAS_COZINHA).style.visibility = 'hidden';
+    }
+
+    if (localStorage.getItem("checkboxWC") == "checked") {
+        document.getElementById(DIV_HORAS_WC).style.visibility = 'visible';
+    } else {
+        document.getElementById(DIV_HORAS_WC).style.visibility = 'hidden';
+    }
+}
+
+function getHoras(){
+    if(localStorage.getItem(CHECK_SALA) == "checked"){
+        document.getElementById(CHECK_SALA).checked = true;
+    }else{
+        document.getElementById(CHECK_SALA).checked = false;
+    }
+
+    if(localStorage.getItem(CHECK_QUARTO) == "checked"){
+        document.getElementById(CHECK_QUARTO).checked = true;
+    }else{
+        document.getElementById(CHECK_QUARTO).checked = false;
+    }
+
+    if(localStorage.getItem(CHECK_COZINHA) == "checked"){
+        document.getElementById(CHECK_COZINHA).checked = true;
+    }else{
+        document.getElementById(CHECK_COZINHA).checked = false;
+    }
+
+    if(localStorage.getItem(CHECK_WC) == "checked"){
+        document.getElementById(CHECK_WC).checked = true;
+    }else{
+        document.getElementById(CHECK_WC).checked = false;
+    }
+}
 
 function estores(clicked_id) {
     if (clicked_id == "abrirBtnSala") {
@@ -145,5 +176,39 @@ function estores(clicked_id) {
         document.getElementById(clicked_id).disabled = true;
         document.getElementById("abrirBtnWC").disabled = false;
     }
-    
+
+}
+
+function setEstoresStatus() {
+    if (document.getElementById("statusEstoresSala").innerHTML == 'ABERTOS') {
+        localStorage.setItem("statusEstoresSala", 'ABERTOS');
+    } else if (document.getElementById("statusEstoresSala").innerHTML == 'FECHADOS') {
+        localStorage.setItem("statusEstoresSala", 'FECHADOS');
+    }
+
+    if (document.getElementById("statusEstoresQuarto").innerHTML == 'ABERTOS') {
+        localStorage.setItem("statusEstoresQuarto", 'ABERTOS');
+    } else if (document.getElementById("statusEstoresQuarto").innerHTML == 'FECHADOS') {
+        localStorage.setItem("statusEstoresQuarto", 'FECHADOS');
+    }
+
+    if (document.getElementById("statusEstoresCozinha").innerHTML == 'ABERTOS') {
+        localStorage.setItem("statusEstoresCozinha", 'ABERTOS');
+    } else if (document.getElementById("statusEstoresCozinha").innerHTML == 'FECHADOS') {
+        localStorage.setItem("statusEstoresCozinha", 'FECHADOS');
+    }
+
+    if (document.getElementById("statusEstoresWC").innerHTML == 'ABERTOS') {
+        localStorage.setItem("statusEstoresWC", 'ABERTOS');
+    } else if (document.getElementById("statusEstoresWC").innerHTML == 'FECHADOS') {
+        localStorage.setItem("statusEstoresWC", 'FECHADOS');
+    }
+}
+
+
+function getEstoresStatus(){
+    document.getElementById("statusEstoresSala").innerHTML=localStorage.getItem("statusEstoresSala");
+    document.getElementById("statusEstoresQuarto").innerHTML=localStorage.getItem("statusEstoresQuarto");
+    document.getElementById("statusEstoresCozinha").innerHTML=localStorage.getItem("statusEstoresCozinha");
+    document.getElementById("statusEstoresWC").innerHTML=localStorage.getItem("statusEstoresWC");
 }
