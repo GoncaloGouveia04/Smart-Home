@@ -3,17 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/despensa.css">
     <title>Smart Home: Gestor da Despensa</title>
 </head>
 
 <body>
     <div id="ecra">
-        <div id="optionsBtn">
-            <button id="optionsBtn*">Opções</button>
+        <div id="definicoes-window">
+            <button id="closeBtn">Fechar</button>
+            <p>Alerta de data de validade(Avisa quando um produto está prestes a passar de validade)</p>
+            <div class="optionsDiv" id="validade">
+                <button>ON</button>
+                <button>OFF</button>
+            </div>
+            <p>Alerta de falta de produtos (Avisa quando um produto está em pouca quantidade)</p>
+            <div class="optionsDiv" id="falta">
+                <button>ON</button>
+                <button>OFF</button>
+            </div>
         </div>
-        <div id="backBtnPosition">
+        <div id="buttonsPosition">
             <button id="backBtn" onclick="window.location.href='index.html'">Voltar</button>
+            <button id="optionsBtn">Opções</button>
         </div>
         <h1>Despensa</h1>
         <div id="despensaArea">
@@ -21,10 +32,10 @@
         <div id="opcoesArea">
             <form>
                 <h4>Ordenar por:</h4>
-                <input type="radio" name="opcoes" value="dataValidade">
+                <input type="radio" name="opcoes" id="dataValidade">
                 <label for="dataValidade">Data de Validade</label>
                 <br>
-                <input type="radio" name="opcoes" value="quantidade">
+                <input type="radio" name="opcoes" id="quantidade">
                 <label for="quantidade">Quantidade</label>
                 <br>
             </form>
@@ -43,5 +54,4 @@
     </div>
 </body>
 <script src="scripts/despensaScript.js"></script>
-
 </html>
