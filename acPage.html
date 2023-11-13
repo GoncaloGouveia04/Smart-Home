@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <link href="styles/ac.css" rel="stylesheet">
     <script src="scripts/acScript.js"></script>
+
     <title>Ar-condicionado</title>
 </head>
 
@@ -13,11 +14,12 @@
         <div id="backBtnPosition">
             <button onclick="window.location.href='index.html'">Voltar</button>
         </div>
-        <center>
-            <h1>Ar-condicionado</h1>
-        </center>
+        <h1 style="text-align: center;">Ar-condicionado</h1>
         <div id="gridAC">
-            <div><button>ON</button><button>OFF</button></div>
+            <div id="optionsSala1">
+                <button>ON</button>
+                <button>OFF</button>
+            </div>
             <div>Sala1</div>
             <div>Temperatura: <span id="temperaturaSala1"></span> <br>
                 Velocidade: <span id="velocidadeSala1"></span>
@@ -25,7 +27,10 @@
             <div>
                 <button id="alterarSala1" onclick="saveValues(this.id)">Alterar</button>
             </div>
-            <div><button>ON</button><button>OFF</button></div>
+            <div id="optionsQuarto">
+                <button>ON</button>
+                <button>OFF</button>
+            </div>
             <div>Quarto</div>
             <div>Temperatura: <span id="temperaturaQuarto"></span> <br>
                 Velocidade: <span id="velocidadeQuarto"></span>
@@ -33,9 +38,9 @@
             <div>
                 <button id="alterarQuarto" onclick="saveValues(this.id)">Alterar</button>
             </div>
-            <div>
-                <button id="onButton" onclick="toggleButton(this)">ON</button><button id="offButton"
-                    onclick="toggleButton(this)">OFF</button>
+            <div id="optionsCozinha">
+                <button>ON</button>
+                <button>OFF</button>
             </div>
             <div>Cozinha</div>
             <div>Temperatura: <span id="temperaturaCozinha"></span> <br>
@@ -44,7 +49,10 @@
             <div>
                 <button id="alterarCozinha" onclick="saveValues(this.id)">Alterar</button>
             </div>
-            <div><button>ON</button><button>OFF</button></div>
+            <div id="optionsSala2">
+                <button>ON</button>
+                <button>OFF</button>
+            </div>
             <div>Sala2</div>
             <div>Temperatura: <span id="temperaturaSala2"></span> <br>
                 Velocidade: <span id="velocidadeSala2"></span>
