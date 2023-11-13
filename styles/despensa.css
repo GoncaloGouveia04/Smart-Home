@@ -48,6 +48,8 @@ h1 {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
     column-gap: 0;
+    overflow: scroll;
+    overflow-x: hidden;
 }
 
 #opcoesArea {
