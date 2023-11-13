@@ -23,12 +23,14 @@ function principal() {
     setInterval(function time() {
         checkHoras();
         setEstoresStatus();
+        setHoras();
     }, 100)
 
     defineEventHandlers();
 
-    getHoras();
+    getHorasStatus();
     getEstoresStatus();
+    getHoras();
 }
 
 function defineEventHandlers() {
@@ -111,7 +113,7 @@ function checkHoras() {
     }
 }
 
-function getHoras() {
+function getHorasStatus() {
     if (localStorage.getItem(CHECK_SALA) == "checked") {
         document.getElementById(CHECK_SALA).checked = true;
     } else {
@@ -237,4 +239,26 @@ function getEstoresStatus() {
         document.getElementById("statusEstoresWC").innerHTML = 'FECHADOS';
         document.getElementById("fecharBtnWC").disabled = true;
     }
+}
+
+function setHoras(){
+    localStorage.setItem("fecharHorasSala", document.getElementById("horasSala").children[0].value);
+    localStorage.setItem("abrirHorasSala", document.getElementById("horasSala").children[2].value);
+    localStorage.setItem("fecharHorasQuarto", document.getElementById("horasQuarto").children[0].value);
+    localStorage.setItem("abrirHorasQuarto", document.getElementById("horasQuarto").children[2].value);
+    localStorage.setItem("fecharHorasCozinha", document.getElementById("horasCozinha").children[0].value);
+    localStorage.setItem("abrirHorasCozinha", document.getElementById("horasCozinha").children[2].value);
+    localStorage.setItem("fecharHorasWC", document.getElementById("horasWC").children[0].value);
+    localStorage.setItem("abrirHorasWC", document.getElementById("horasWC").children[2].value);
+}
+
+function getHoras(){
+    document.getElementById("horasSala").children[0].value = localStorage.getItem("fecharHorasSala");
+    document.getElementById("horasSala").children[2].value = localStorage.getItem("abrirHorasSala");
+    document.getElementById("horasQuarto").children[0].value = localStorage.getItem("fecharHorasQuarto");
+    document.getElementById("horasQuarto").children[2].value = localStorage.getItem("abrirHorasQuarto");
+    document.getElementById("horasCozinha").children[0].value = localStorage.getItem("fecharHorasCozinha");
+    document.getElementById("horasCozinha").children[2].value = localStorage.getItem("abrirHorasCozinha");
+    document.getElementById("horasWC").children[0].value = localStorage.getItem("fecharHorasWC");
+    document.getElementById("horasWC").children[2].value = localStorage.getItem("abrirHorasWC");
 }
