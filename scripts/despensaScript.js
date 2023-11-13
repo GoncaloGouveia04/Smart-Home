@@ -20,19 +20,32 @@ const productsList = ["Barra de Chocolate", "Cereais", "Iogurte Natural", "Maç�
     "Pacote de Bolacha", "Leite", "Leite Condensado", "Lata de Atum", "Posta de Salmão",
     "Cenoura", "Tomate", "Pacote de Arroz", "Pacote de Massa", "Batata",
     "Lombo de Porco", "Peito de Frango", "Picanha", "Garrafa de Água", "Pacote de açúcar",
-    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Sacos de Café", "Doce de Morango"]
+    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
 window.addEventListener("load", principal);
 
-function createProduct(name) {
+function Product(name) {
     this.name = name;
     this.quantity = Math.floor(Math.random());
     this.expireDate = "a";
+}
+
+function getProductID(product) {
+    let productConverter = product.toLowerCase().replace("ã","a").replace("á","a").replace("é","e").replace("ú","u").replace("ç","c");
+    let prodList = productConverter.split(" ");
+    let productID = "";
+    for (let word of prodList) {
+        productID = productID + word;
+    }
+
+    return productID;
 }
 function principal() {
     defineEventHandlers();
     //addProducts();
     getAlarms();
+    document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
+    
 }
 
 function defineEventHandlers() {
@@ -45,18 +58,20 @@ function defineEventHandlers() {
 
 
 
-function displayBoardHTML() {
-    let html = '<table class="produtosDespensa">';
+function displayDespensaHTML() {
+    let html = '<table id="tabelaProdutosDespensa">';
     let i = 0
     for (let row = 0; row < 5; row++) {
         html += "<tr>";
 
         for (let column = 0; column < 5; column++) {
-            let product = productsList[i]
-            html += "<td class='game' id='td_" + getCellID(row, jewel) + "'>\
-            <img class='tablepiece' id='" + getCellID(row, jewel) + "' src=../media/" + jewel_type + "_jewel.png></td>";
+            let product = new Product(productsList[i]);
+            html += "<td id='td_" + getProductID(product.name) + "'>\
+            <img class='produto' id='" + getProductID(product.name) + "' src=imagens/" + getProductID(product.name) + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
+            i++;
         }
         html += "</tr>";
+        
     }
     html += "</table>";
     return html;

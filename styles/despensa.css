@@ -39,9 +39,10 @@ h1 {
 }
 
 #despensaArea {
+    font-size: 13px;
     border: 2px solid black;
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -113,4 +114,15 @@ h4 {
 .optionsDiv button{
     margin: 5px 5px 5px 5px;
     width: 37px;
+}
+
+.produto{
+    width: 40px;
+    height: 40px;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+#tabelaProdutosDespensa {
+    border-spacing: 10px;
 }
