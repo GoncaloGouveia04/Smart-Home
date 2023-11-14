@@ -128,3 +128,8 @@ h4 {
 #tabelaProdutosDespensa {
     border-spacing: 10px;
 }
+
+.tdProduto {
+    justify-content: center;
+    text-align: center;
+}

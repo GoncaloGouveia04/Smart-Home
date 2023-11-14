@@ -16,18 +16,25 @@ const popupDiv = document.getElementById("definicoes-window");
 
 const ecraDiv = document.getElementById("ecra");
 
-const productsList = ["Barra de Chocolate", "Cereais", "Iogurte Natural", "Maçã", "Azeite",
+const allProductsList = ["Barra de Chocolate", "Cereais", "Iogurte Natural", "Maçã", "Azeite",
     "Pacote de Bolacha", "Leite", "Leite Condensado", "Lata de Atum", "Posta de Salmão",
     "Cenoura", "Tomate", "Pacote de Arroz", "Pacote de Massa", "Batata",
     "Lombo de Porco", "Peito de Frango", "Picanha", "Garrafa de Água", "Pacote de açúcar",
     "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
+const freezerProducts = ["Iogurte Natural", "Posta de Salmão", "Lombo de Porco", "Peito de Frango", "Picanha",
+                         "Cenoura", "Tomate", "Maçã", "Leite"]
+
+const despensaProducts = ["Barra de Chocolate", "Cereais", "Azeite", "Pacote de Bolacha", "Leite Condensado", "Lata de Atum",
+                          "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
+                          "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
+
 window.addEventListener("load", principal);
 
 function Product(name) {
     this.name = name;
-    this.quantity = Math.floor(Math.random());
-    this.expireDate = "a";
+    this.quantity = Math.floor(Math.random() * 1);
+    this.expireDate = dateGenerator(this.name);
 }
 
 function getProductID(product) {
@@ -39,6 +46,19 @@ function getProductID(product) {
     }
 
     return productID;
+}
+
+function dateGenerator(product){
+    let todaysDate= new Date();
+    let result = ""
+    result = result + todaysDate.getFullYear()+"/"+(todaysDate.getMonth()+1)+"/"+todaysDate.getDate();
+    if (freezerProducts.indexOf(product) >= 0) {
+
+    }
+    else {
+
+    }
+    return result;
 }
 function principal() {
     defineEventHandlers();
@@ -53,7 +73,7 @@ function defineEventHandlers() {
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
     defineAlarms();
     defineOrderOfProducts();
-    showProdutsOption();
+    showProductsOption();
 }
 
 
@@ -65,8 +85,8 @@ function displayDespensaHTML() {
         html += "<tr>";
 
         for (let column = 0; column < 5; column++) {
-            let product = new Product(productsList[i]);
-            html += "<td id='td_" + getProductID(product.name) + "'>\
+            let product = new Product(allProductsList[i]);
+            html += "<td class='tdProduto' id='td_" + getProductID(product.name) + "'>\
             <img class='produto' id='" + getProductID(product.name) + "' src=imagens/" + getProductID(product.name) + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
             i++;
         }
@@ -144,6 +164,6 @@ function defineOrderOfProducts(){
     }
 }
 
-function showProdutsOption(){
-
+function showProductsOption(){
+    console.log("")
 }
