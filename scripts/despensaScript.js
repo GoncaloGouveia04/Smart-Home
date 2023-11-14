@@ -33,7 +33,7 @@ window.addEventListener("load", principal);
 
 function Product(name) {
     this.name = name;
-    this.quantity = Math.floor(Math.random() * 1);
+    this.quantity = Math.floor(Math.random() * 11);
     this.expireDate = dateGenerator(this.name);
 }
 
@@ -156,14 +156,9 @@ function getAlarms() {
 }
 
 function defineOrderOfProducts(){
-    console.log(document.getElementById("quantidade"));
-    if(document.getElementById("quantidade").checked){
-        localStorage.setItem("Ordenar produtos por: ", "Quantidade");
-    }else{
-        localStorage.setItem("Ordenar produtos por: ", "Validade");
-    }
+    
 }
 
 function showProductsOption(){
-    console.log("")
+
 }
