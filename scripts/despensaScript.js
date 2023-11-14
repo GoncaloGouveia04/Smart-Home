@@ -16,7 +16,7 @@ const popupDiv = document.getElementById("definicoes-window");
 
 const ecraDiv = document.getElementById("ecra");
 
-const allProductsList = ["Barra de Chocolate", "Cereais", "Iogurte Natural", "Maçã", "Azeite",
+const allProductsNameList = ["Barra de Chocolate", "Cereais", "Iogurte Natural", "Maçã", "Azeite",
     "Pacote de Bolacha", "Leite", "Leite Condensado", "Lata de Atum", "Posta de Salmão",
     "Cenoura", "Tomate", "Pacote de Arroz", "Pacote de Massa", "Batata",
     "Lombo de Porco", "Peito de Frango", "Picanha", "Garrafa de Água", "Pacote de açúcar",
@@ -35,7 +35,20 @@ function Product(name) {
     this.name = name;
     this.quantity = Math.floor(Math.random() * 11);
     this.expireDate = dateGenerator(this.name);
+    this.id = getProductID(name);
 }
+
+function getProductsList(allProductsNameList) {
+    let productsList = [];
+    for (let p of allProductsNameList) {
+        let product = new Product(p);
+        productsList.push(product);
+    }
+
+    return productsList;
+}
+
+
 
 function getProductID(product) {
     let productConverter = product.toLowerCase().replace("ã","a").replace("á","a").replace("é","e").replace("ú","u").replace("ç","c");
@@ -64,30 +77,40 @@ function principal() {
     defineEventHandlers();
     //addProducts();
     getAlarms();
-    document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
+    document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
     
 }
 
 function defineEventHandlers() {
     document.getElementById(OPTIONS_BUTTON).addEventListener("click", showWindow);
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
+
+    let productsList = getProductsList(allProductsNameList);
+    for (let i = 0; i<productsList.length; i++) {
+        let product = productsList[i];
+        document.getElementById(product.id).addEventListener("click", function() {alert("a")});
+    }
+    
     defineAlarms();
     defineOrderOfProducts();
     showProductsOption();
+    
 }
 
 
 
-function displayDespensaHTML() {
+function displayDespensaHTML(productsNameList) {
     let html = '<table id="tabelaProdutosDespensa">';
-    let i = 0
+    let i = 0;
+    let productsList = getProductsList(productsNameList);
+
     for (let row = 0; row < 5; row++) {
         html += "<tr>";
 
         for (let column = 0; column < 5; column++) {
-            let product = new Product(allProductsList[i]);
-            html += "<td class='tdProduto' id='td_" + getProductID(product.name) + "'>\
-            <img class='produto' id='" + getProductID(product.name) + "' src=imagens/" + getProductID(product.name) + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
+            let product = productsList[i];
+            html += "<td class='tdProduto' id='td_" + product.id + "'>\
+            <img class='produto' id='" + product.id + "' src=imagens/" + product.id + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
             i++;
         }
         html += "</tr>";
