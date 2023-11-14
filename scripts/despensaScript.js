@@ -23,11 +23,11 @@ const allProductsNameList = ["Barra de Chocolate", "Cereais", "Iogurte Natural",
     "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
 const freezerProducts = ["Iogurte Natural", "Posta de Salmão", "Lombo de Porco", "Peito de Frango", "Picanha",
-                         "Cenoura", "Tomate", "Maçã", "Leite"]
+    "Cenoura", "Tomate", "Maçã", "Leite"]
 
 const despensaProducts = ["Barra de Chocolate", "Cereais", "Azeite", "Pacote de Bolacha", "Leite Condensado", "Lata de Atum",
-                          "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
-                          "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
+    "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
+    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
 window.addEventListener("load", principal);
 
@@ -48,10 +48,8 @@ function getProductsList(allProductsNameList) {
     return productsList;
 }
 
-
-
 function getProductID(product) {
-    let productConverter = product.toLowerCase().replace("ã","a").replace("á","a").replace("é","e").replace("ú","u").replace("ç","c");
+    let productConverter = product.toLowerCase().replace("ã", "a").replace("á", "a").replace("é", "e").replace("ú", "u").replace("ç", "c");
     let prodList = productConverter.split(" ");
     let productID = "";
     for (let word of prodList) {
@@ -61,10 +59,10 @@ function getProductID(product) {
     return productID;
 }
 
-function dateGenerator(product){
-    let todaysDate= new Date();
+function dateGenerator(product) {
+    let todaysDate = new Date();
     let result = ""
-    result = result + todaysDate.getFullYear()+"/"+(todaysDate.getMonth()+1)+"/"+todaysDate.getDate();
+    result = result + todaysDate.getFullYear() + "/" + (todaysDate.getMonth() + 1) + "/" + todaysDate.getDate();
     if (freezerProducts.indexOf(product) >= 0) {
 
     }
@@ -74,11 +72,11 @@ function dateGenerator(product){
     return result;
 }
 function principal() {
-    defineEventHandlers();
     //addProducts();
     getAlarms();
     document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
-    
+    defineEventHandlers();
+
 }
 
 function defineEventHandlers() {
@@ -86,18 +84,35 @@ function defineEventHandlers() {
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
 
     let productsList = getProductsList(allProductsNameList);
-    for (let i = 0; i<productsList.length; i++) {
+    for (let i = 0; i < productsList.length; i++) {
         let product = productsList[i];
-        document.getElementById(product.id).addEventListener("click", function() {alert("a")});
+        let productElement = document.getElementById("td_"+product.id);
+        document.getElementById("td_"+product.id).addEventListener("mouseenter", function () {
+            document.getElementById("td_"+product.id).style.backgroundColor = "#808080";
+        })
+        document.getElementById("td_"+product.id).addEventListener("mouseleave", function () {
+            document.getElementById("td_"+product.id).style.backgroundColor = "transparent";
+        })
+        productElement.addEventListener("click", function () {
+            let imagemProduto = document.getElementById(product.id).src;
+            let produtoPopup = "comprarProdutoDiv";
+            document.getElementById(produtoPopup).style.display = "block";
+            let div = "<div>";
+            div += "<button onclick='document.getElementById(\"comprarProdutoDiv\").style.display = \"none\";' style='float:right;'>Fechar</button>";
+            div += "<br>"
+            div += "<h3 style='text-align:center;'>" + product.name + "</h3>";
+            div += "<center><img src='" + imagemProduto + "' width=100 height=100'></img></center>";
+            div += "<center><p>&nbsp &nbsp &nbspQuantidade: " + product.quantity + " &nbsp &nbsp &nbsp Data de Validade: " + product.expireDate + "</p></center>";
+            div += "<br>";
+            div += "<center><button>Comprar</button></center>";
+            document.getElementById(produtoPopup).innerHTML = div + "</div>";
+        });
     }
-    
     defineAlarms();
     defineOrderOfProducts();
     showProductsOption();
-    
+
 }
-
-
 
 function displayDespensaHTML(productsNameList) {
     let html = '<table id="tabelaProdutosDespensa">';
@@ -114,15 +129,10 @@ function displayDespensaHTML(productsNameList) {
             i++;
         }
         html += "</tr>";
-        
+
     }
     html += "</table>";
     return html;
-}
-
-
-function comprarProduto() {
-
 }
 
 function showWindow() {
@@ -178,10 +188,10 @@ function getAlarms() {
     }
 }
 
-function defineOrderOfProducts(){
-    
+function defineOrderOfProducts() {
+
 }
 
-function showProductsOption(){
+function showProductsOption() {
 
 }

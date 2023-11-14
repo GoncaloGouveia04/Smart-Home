@@ -85,7 +85,7 @@ h4 {
     margin-left: 50px;
 }
 
-#optionsBtn{
+#optionsBtn {
     float: left;
     height: 70px;
     width: 70px;
@@ -107,18 +107,18 @@ h4 {
     display: none;
 }
 
-.optionsDiv{
+.optionsDiv {
     display: inline-block;
     border: 2px solid black;
     border-radius: 10%;
 }
 
-.optionsDiv button{
+.optionsDiv button {
     margin: 5px 5px 5px 5px;
     width: 37px;
 }
 
-.produto{
+.produto {
     width: 40px;
     height: 40px;
     margin-left: auto;
@@ -132,4 +132,23 @@ h4 {
 .tdProduto {
     justify-content: center;
     text-align: center;
+}
+
+#comprarProdutoDiv {
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 600px;
+    height: 300px;
+    background-color: white;
+    border: 2px solid black;
+    z-index: 10;
+    display: none;
+}
+
+.tdProduto {
+    cursor: pointer;
 }
