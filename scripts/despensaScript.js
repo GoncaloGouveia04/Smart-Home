@@ -29,6 +29,9 @@ const despensaProducts = ["Barra de Chocolate", "Cereais", "Azeite", "Pacote de 
     "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
     "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
+
+const productsList = getProductsList(allProductsNameList);
+
 window.addEventListener("load", principal);
 
 function Product(name) {
@@ -76,22 +79,29 @@ function principal() {
     getAlarms();
     document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
     defineEventHandlers();
-
 }
 
 function defineEventHandlers() {
     document.getElementById(OPTIONS_BUTTON).addEventListener("click", showWindow);
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
-
-    let productsList = getProductsList(allProductsNameList);
+    document.getElementById("quantidade").addEventListener("click", function () {
+        displayDespensaHTML(allProductsNameList);
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
+        defineEventHandlers();
+    });
+    document.getElementById("dataValidade").addEventListener("click", function () {
+        displayDespensaHTML(allProductsNameList);
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
+        defineEventHandlers();
+    });
     for (let i = 0; i < productsList.length; i++) {
         let product = productsList[i];
-        let productElement = document.getElementById("td_"+product.id);
-        document.getElementById("td_"+product.id).addEventListener("mouseenter", function () {
-            document.getElementById("td_"+product.id).style.backgroundColor = "#808080";
+        let productElement = document.getElementById("td_" + product.id);
+        document.getElementById("td_" + product.id).addEventListener("mouseenter", function () {
+            document.getElementById("td_" + product.id).style.background = "#FFFFC2";
         })
-        document.getElementById("td_"+product.id).addEventListener("mouseleave", function () {
-            document.getElementById("td_"+product.id).style.backgroundColor = "transparent";
+        document.getElementById("td_" + product.id).addEventListener("mouseleave", function () {
+            document.getElementById("td_" + product.id).style.background= 'transparent';
         })
         productElement.addEventListener("click", function () {
             let imagemProduto = document.getElementById(product.id).src;
@@ -110,26 +120,31 @@ function defineEventHandlers() {
     }
     defineAlarms();
     defineOrderOfProducts();
-    showProductsOption();
-
 }
 
 function displayDespensaHTML(productsNameList) {
     let html = '<table id="tabelaProdutosDespensa">';
     let i = 0;
-    let productsList = getProductsList(productsNameList);
-
+    let orderedProductsQuantity = orderByQuantity(productsList);
+    let orderedProductsValidity = orderByValidity(productsList);
+    let selectedOrder = [];
+    if (document.getElementById("quantidade").checked == true) {
+        selectedOrder = orderedProductsQuantity;
+    } else if (document.getElementById("dataValidade").checked == true) {
+        selectedOrder = orderedProductsValidity;
+    } else {
+        selectedOrder = productsList;
+    }
     for (let row = 0; row < 5; row++) {
         html += "<tr>";
-
         for (let column = 0; column < 5; column++) {
-            let product = productsList[i];
+            let product = selectedOrder[i];
             html += "<td class='tdProduto' id='td_" + product.id + "'>\
             <img class='produto' id='" + product.id + "' src=imagens/" + product.id + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
             i++;
         }
-        html += "</tr>";
 
+        html += "</tr>";
     }
     html += "</table>";
     return html;
@@ -189,9 +204,57 @@ function getAlarms() {
 }
 
 function defineOrderOfProducts() {
-
 }
 
-function showProductsOption() {
+function orderByQuantity(productsList) {
 
+    let orderedProducts = [];
+    let productsList_copy = productsList;
+
+    for (let i = 0; i < productsList.length; i++) {
+        let lowestQuantity = 9999999;
+        let lowestProduct = null;
+
+        for (let product of productsList_copy) {
+
+            if (product.quantity < lowestQuantity) {
+                lowestProduct = product;
+                lowestQuantity = product.quantity;
+            }
+        }
+
+        orderedProducts.push(lowestProduct);
+
+        productsList_copy = productsList_copy.filter(x => x !== lowestProduct);
+    }
+
+    return orderedProducts;
+}
+
+function orderByValidity(productsList) {
+    let orderedProducts = [];
+    let productsList_copy = productsList;
+
+    while (productsList_copy.length > 0) {
+        let lowestQuantity = Infinity;
+        let lowestProduct = null;
+
+        for (let product of productsList_copy) {
+            let date = product.expireDate;
+            let splitDate = date.split("/");
+            let dateToDays = splitDate[0] * 365 + splitDate[1] * 30 + splitDate[2];
+
+            if (dateToDays < lowestQuantity) {
+                lowestProduct = product;
+                lowestQuantity = dateToDays;
+            }
+        }
+
+        if (lowestProduct !== null) {
+            orderedProducts.push(lowestProduct);
+            productsList_copy = productsList_copy.filter(x => x !== lowestProduct);
+        }
+    }
+
+    return orderedProducts;
 }
