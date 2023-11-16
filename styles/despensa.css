@@ -147,8 +147,14 @@ h4 {
     border: 2px solid black;
     z-index: 10;
     display: none;
+    text-align: center;
 }
 
 .tdProduto {
     cursor: pointer;
+}
+
+#buyInput{
+    width: 3em;
+    
 }

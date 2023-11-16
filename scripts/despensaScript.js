@@ -76,12 +76,12 @@ function dateGenerator(product) {
 function principal() {
     //addProducts();
     productsList = JSON.parse(localStorage.getItem("productsList")) || [];
-
-    if (productsList.length == 0){
+    getOrderBy();
+    if (productsList.length == 0) {
         productsList = getProductsList(allProductsNameList);
         localStorage.setItem("productsList", JSON.stringify(productsList));
     }
-    
+
     getAlarms();
     document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
     defineEventHandlers();
@@ -91,11 +91,13 @@ function defineEventHandlers() {
     document.getElementById(OPTIONS_BUTTON).addEventListener("click", showWindow);
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
     document.getElementById("quantidade").addEventListener("click", function () {
+        localStorage.setItem("Ordenar por:", "quantidade");
         displayDespensaHTML();
         document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
         defineEventHandlers();
     });
     document.getElementById("dataValidade").addEventListener("click", function () {
+        localStorage.setItem("Ordenar por:", "dataValidade");
         displayDespensaHTML();
         document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
         defineEventHandlers();
@@ -109,21 +111,41 @@ function defineEventHandlers() {
             document.getElementById("td_" + product.id).style.background = "#FFFFC2";
         })
         document.getElementById("td_" + product.id).addEventListener("mouseleave", function () {
-            document.getElementById("td_" + product.id).style.background= 'transparent';
+            document.getElementById("td_" + product.id).style.background = 'transparent';
         })
         productElement.addEventListener("click", function () {
             let imagemProduto = document.getElementById(product.id).src;
             let produtoPopup = "comprarProdutoDiv";
             document.getElementById(produtoPopup).style.display = "block";
-            let div = "<div>";
+            let div = "<div id='productInformation'>";
             div += "<button onclick='document.getElementById(\"comprarProdutoDiv\").style.display = \"none\";' style='float:right;'>Fechar</button>";
             div += "<br>"
             div += "<h3 style='text-align:center;'>" + product.name + "</h3>";
             div += "<center><img src='" + imagemProduto + "' width=100 height=100'></img></center>";
             div += "<center><p>&nbsp &nbsp &nbspQuantidade: " + product.quantity + " &nbsp &nbsp &nbsp Data de Validade: " + product.expireDate + "</p></center>";
             div += "<br>";
-            div += "<center><button>Comprar</button></center>";
+            div += "<center><button id='comprarProduto'>Comprar</button></center>";
             document.getElementById(produtoPopup).innerHTML = div + "</div>";
+            document.getElementById("comprarProduto").addEventListener("click", function () {
+                document.getElementById("productInformation").style.display = 'none';
+                let produtoPopup = "comprarProdutoDiv";
+                let div = '<div id="buyProductDiv">';
+                div += "<button onclick='document.getElementById(\"comprarProdutoDiv\").style.display = \"none\";' style='float: right;'>Fechar</button>";
+                div += '<br>';
+                div += '<h3>' + product.name + '</h3>';
+                div += "<center><img src='" + imagemProduto + "' width=100 height=100'></img></center>";
+                div += '<br>';
+                div += "<input type=number min=1 max=30 id='buyInput'></input>";
+                div += '<br>';
+                div += '<button id="comprarBtn" style="margin-top: 10px;">Comprar</button>';
+                document.getElementById(produtoPopup).innerHTML = div;
+                document.getElementById("comprarBtn").addEventListener("click", function(){
+                    product.quantity = parseInt(document.getElementById("buyInput").value) + parseInt(product.quantity);
+                    product.quantity = parseInt(product.quantity);
+                    document.getElementById("comprarProdutoDiv").style.display = 'none';
+
+                });
+            });
         });
     }
     defineAlarms();
@@ -133,12 +155,12 @@ function defineEventHandlers() {
 function displayDespensaHTML() {
     let html = '<table id="tabelaProdutosDespensa">';
     let i = 0;
-    let orderedProductsQuantity = orderByQuantity(productsList);
-    let orderedProductsValidity = orderByValidity(productsList);
     let selectedOrder = [];
     if (document.getElementById("quantidade").checked == true) {
+        let orderedProductsQuantity = orderByQuantity(productsList);
         selectedOrder = orderedProductsQuantity;
     } else if (document.getElementById("dataValidade").checked == true) {
+        let orderedProductsValidity = orderByValidity(productsList);
         selectedOrder = orderedProductsValidity;
     } else {
         selectedOrder = productsList;
@@ -147,8 +169,13 @@ function displayDespensaHTML() {
         html += "<tr>";
         for (let column = 0; column < 5; column++) {
             let product = selectedOrder[i];
-            html += "<td class='tdProduto' id='td_" + product.id + "'>\
-            <img class='produto' id='" + product.id + "' src=imagens/" + product.id + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
+            if (i < selectedOrder.length) {
+                html += "<td class='tdProduto' id='td_" + product.id + "'>\
+                    <img class='produto' id='" + product.id + "' src=imagens/" + product.id + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
+            }
+            else {
+                html += "<td></td>";
+            }
             i++;
         }
 
@@ -157,6 +184,7 @@ function displayDespensaHTML() {
     html += "</table>";
     return html;
 }
+
 
 function showWindow() {
     popupDiv.style.display = "block";
@@ -265,4 +293,12 @@ function orderByValidity(productsList) {
     }
 
     return orderedProducts;
+}
+
+function getOrderBy() {
+    if (localStorage.getItem("Ordenar por:") == "quantidade") {
+        document.getElementById("quantidade").checked = true;
+    } else {
+        document.getElementById("dataValidade").checked = true;
+    }
 }
