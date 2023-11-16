@@ -29,8 +29,7 @@ const despensaProducts = ["Barra de Chocolate", "Cereais", "Azeite", "Pacote de 
     "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
     "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
 
-
-const productsList = getProductsList(allProductsNameList);
+let productsList = null;
 
 window.addEventListener("load", principal);
 
@@ -76,8 +75,15 @@ function dateGenerator(product) {
 }
 function principal() {
     //addProducts();
+    productsList = JSON.parse(localStorage.getItem("productsList")) || [];
+
+    if (productsList.length == 0){
+        productsList = getProductsList(allProductsNameList);
+        localStorage.setItem("productsList", JSON.stringify(productsList));
+    }
+    
     getAlarms();
-    document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
+    document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
     defineEventHandlers();
 }
 
@@ -85,15 +91,17 @@ function defineEventHandlers() {
     document.getElementById(OPTIONS_BUTTON).addEventListener("click", showWindow);
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
     document.getElementById("quantidade").addEventListener("click", function () {
-        displayDespensaHTML(allProductsNameList);
-        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
+        displayDespensaHTML();
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
         defineEventHandlers();
     });
     document.getElementById("dataValidade").addEventListener("click", function () {
-        displayDespensaHTML(allProductsNameList);
-        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML(allProductsNameList);
+        displayDespensaHTML();
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
         defineEventHandlers();
     });
+
+
     for (let i = 0; i < productsList.length; i++) {
         let product = productsList[i];
         let productElement = document.getElementById("td_" + product.id);
@@ -122,7 +130,7 @@ function defineEventHandlers() {
     defineOrderOfProducts();
 }
 
-function displayDespensaHTML(productsNameList) {
+function displayDespensaHTML() {
     let html = '<table id="tabelaProdutosDespensa">';
     let i = 0;
     let orderedProductsQuantity = orderByQuantity(productsList);
