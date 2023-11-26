@@ -27,7 +27,7 @@ function loadOptions() {
 function saveValues(clicked_id) {
     var currentDivision = clicked_id;
     sessionStorage.setItem("currentDivision", currentDivision);
-    window.location.href = "../IC/alterar.html";
+    window.location.href = "alterar.html";
 }
 
 function saveOptions() {

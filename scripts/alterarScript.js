@@ -60,5 +60,5 @@ function saveOptions() {
         sessionStorage.setItem("Temperatura Sala2", temperatura + '°C');
     }
 
-    window.location.href = "../IC/acPage.html";
+    window.location.href = "acPage.html";
 }

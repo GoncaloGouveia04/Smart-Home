@@ -3,12 +3,17 @@
     font-family: "DejaVu Serif";
 }
 
+html{
+    background-color: black;
+}
+
 #ecra{
     width: 1280px;
     height: 780px;
     border: 2px solid black;
     margin-left: auto;
     margin-right: auto;
+    background-color: white;
 }
 
 h1{
@@ -80,4 +85,28 @@ h4{
     height: 130px;
     margin-top: -300px;
     margin-left: 200px;
+}
+
+#optionsDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#optionsDiv button{
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#optionsDiv button:hover{
+    color: white;
+    background-color: black;
+}
+
+#optionsDiv div{
+    margin: 20px;
+    text-align: center;
 }
