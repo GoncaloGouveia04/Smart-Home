@@ -71,3 +71,8 @@ h1{
 #estoresGrid h3{
     margin-left: 20px;
 }
+
+
+.horas input{
+    margin: 5px;
+}

@@ -200,3 +200,37 @@ h4 {
 #opcoesArea form, #mostrarArea form{
     margin-top: -10px;
 }
+
+#productInformation{
+    font-size: 18px;
+}
+
+#productInformation button{
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0.1px solid black;
+    width: 100px;
+}
+
+#productInformation button:hover{
+    color: white;
+    background-color: black;
+}
+
+#buyProductDiv input{
+    font-size: 18px;
+}
+
+#buyProductDiv button{
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0.1px solid black;
+    width: 100px;
+}
+
+#buyProductDiv button:hover{
+    color: white;
+    background-color: black;
+}
