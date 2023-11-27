@@ -17,7 +17,7 @@ html{
 
 h1 {
     text-align: center;
-    margin-top: 80px;
+    margin-top: 50px;
     margin-bottom: 70px;
 }
 
@@ -33,14 +33,18 @@ h1 {
     font-size: 20px;
 }
 
-#buttonsPosition {
-    margin-top: 10px;
+#backBtn {
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
 }
 
-#backBtn {
-    float: right;
-    height: 70px;
-    width: 70px;
+#backBtn:hover{
+    color: white;
+    background-color: black;
 }
 
 #despensaArea {
@@ -83,7 +87,6 @@ h4 {
 
 #mostrarArea {
     border: 2px solid black;
-    font-size: 13px;
     width: 300px;
     height: 130px;
     margin-top: -300px;
@@ -91,9 +94,17 @@ h4 {
 }
 
 #optionsBtn {
-    float: left;
-    height: 70px;
-    width: 70px;
+    float: right;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#optionsBtn:hover{
+    color: white;
+    background-color: black;
 }
 
 #definicoes-window {
@@ -112,6 +123,25 @@ h4 {
     display: none;
 }
 
+#definicoes-window button{
+    cursor: pointer;
+    border: 0.1px solid black; 
+    width: 55px;
+    font-size: 16px;
+}
+
+#definicoes-window button:hover{
+    color: white;
+    background-color: black;
+}
+
+#definicoes-window button:disabled, button[disabled]{
+    cursor: default;
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+}
+
 .optionsDiv {
     display: inline-block;
     border: 2px solid black;
@@ -120,7 +150,6 @@ h4 {
 
 .optionsDiv button {
     margin: 5px 5px 5px 5px;
-    width: 37px;
 }
 
 .produto {
@@ -137,6 +166,7 @@ h4 {
 .tdProduto {
     justify-content: center;
     text-align: center;
+    font-size: 15px;
 }
 
 #comprarProdutoDiv {
@@ -160,6 +190,13 @@ h4 {
 }
 
 #buyInput{
-    width: 3em;
-    
+    width: 3em;   
+}
+
+#opcoesArea, #mostrarArea{
+    font-size: 18px;
+}
+
+#opcoesArea form, #mostrarArea form{
+    margin-top: -10px;
 }

@@ -1,0 +1,89 @@
+*{
+    font-family: "DejaVu Serif";
+}
+
+html{
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}
+
+#ecra{
+    width: 1280px;
+    height: 780px;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.container {
+    text-align: center;
+}
+
+.speed-container, .temperature-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.speed-container {
+    margin-top: 40px;
+}
+
+.temperature-container {
+    margin-top: 20px; /* Adiciona espaço entre a barra de velocidade e o controle de temperatura */
+}
+
+h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    width: 80%;
+    margin: 5px 0;
+}
+
+#speed-display, #temperature-display {
+    font-size: 36px;
+}
+
+#backBtnPosition {
+    float: left;
+}
+
+#backBtn {
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#backBtn:hover {
+    color: white;
+    background-color: black;
+}
+
+#guardarBtnPosition{
+    margin-top: 50px;
+    text-align: center;
+}
+
+#guardarBtn{
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#guardarBtn:hover{
+    color: white;
+    background-color: black;
+}

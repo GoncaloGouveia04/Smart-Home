@@ -14,6 +14,7 @@ window.addEventListener("load", principal);
 
 function principal() {
     defineEventHandlers();
+    getOptions();
 }
 
 function defineEventHandlers() {
@@ -61,4 +62,32 @@ function saveOptions() {
     }
 
     window.location.href = "acPage.html";
+}
+
+function getOptions(){
+    var currentDivision = sessionStorage.getItem("currentDivision");
+    if (currentDivision == "alterarSala1") {
+        speedSlider.value = sessionStorage.getItem("Velocidade Sala1");
+        temperatureSlider.value = sessionStorage.getItem("Temperatura Sala1");
+        speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Sala1");
+        temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Sala1");
+    }
+    else if (currentDivision == "alterarQuarto") {
+        speedSlider.value = sessionStorage.getItem("Velocidade Quarto");
+        temperatureSlider.value = sessionStorage.getItem("Temperatura Quarto");
+        speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Quarto");
+        temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Quarto"); 
+    }
+    else if (currentDivision == "alterarCozinha") {
+        speedSlider.value = sessionStorage.getItem("Velocidade Cozinha");
+        temperatureSlider.value = sessionStorage.getItem("Temperatura Cozinha");
+        speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Cozinha");
+        temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Cozinha");
+    }
+    else {
+        speedSlider.value = sessionStorage.getItem("Velocidade Sala2");
+        temperatureSlider.value = sessionStorage.getItem("Temperatura Sala2");
+        speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Sala2");
+        temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Sala2");
+    }
 }

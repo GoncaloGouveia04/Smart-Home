@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/alterar.css">
     <title>Controle de Temperatura</title>
 </head>
+
 <body>
     <div id="ecra">
+        <div id="backBtnPosition">
+            <button id="backBtn" onclick="window.location.href='acPage.html'">Voltar</button>
+        </div>
 
-    
-    <div class="container">
-        <h1>Velocidade</h1>
-        <div class="speed-container">
-            <input type="range" id="speed-slider" min="1" max="5" step="1" value="2">
-            <div id="speed-display"></div>
+        <div class="container">
+            <h1>Velocidade</h1>
+            <div class="speed-container">
+                <input type="range" id="speed-slider" min="1" max="5" step="1" value="2">
+                <div id="speed-display"></div>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <h1>Controle de Temperatura</h1>
-        <div class="temperature-container">
-            <input type="range" id="temperature-slider" min="15" max="30" step="1" value="25">
-            <div id="temperature-display"></div>
+        <div class="container">
+            <h1>Controle de Temperatura</h1>
+            <div class="temperature-container">
+                <input type="range" id="temperature-slider" min="15" max="30" step="1" value="25">
+                <div id="temperature-display"></div>
+            </div>
         </div>
-    </div>
-    <div class="guardarBtnPosition">
-        <button id="guardarBtn">Guardar</button>
-    </div>
+        <div id="guardarBtnPosition">
+            <button id="guardarBtn">Guardar</button>
+        </div>
     </div>
     <script src="scripts/alterarScript.js"></script>
 </body>
+
 </html>
