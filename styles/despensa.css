@@ -50,7 +50,7 @@ h1 {
 #despensaArea {
     font-size: 13px;
     border: 2px solid black;
-    width: 550px;
+    width: 600px;
     height: 550px;
     margin-left: auto;
     margin-right: auto;
@@ -67,7 +67,7 @@ h1 {
     width: 300px;
     height: 130px;
     margin-top: -300px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 h4 {
@@ -78,19 +78,12 @@ h4 {
     margin-left: 10px;
     margin-top: 10px;
 }
-
-.produto {
-    width: 100px;
-    height: 100px;
-    text-align: center;
-}
-
 #mostrarArea {
     border: 2px solid black;
     width: 300px;
     height: 130px;
     margin-top: -300px;
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 #optionsBtn {
@@ -153,10 +146,11 @@ h4 {
 }
 
 .produto {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     margin-left: auto;
     margin-top: auto;
+    text-align: center;
 }
 
 #tabelaProdutosDespensa {
@@ -166,7 +160,7 @@ h4 {
 .tdProduto {
     justify-content: center;
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 #comprarProdutoDiv {

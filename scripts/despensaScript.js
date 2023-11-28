@@ -20,14 +20,17 @@ const allProductsNameList = ["Barra de Chocolate", "Cereais", "Iogurte Natural",
     "Pacote de Bolacha", "Leite", "Leite Condensado", "Lata de Atum", "Posta de Salmão",
     "Cenoura", "Tomate", "Pacote de Arroz", "Pacote de Massa", "Batata",
     "Lombo de Porco", "Peito de Frango", "Picanha", "Garrafa de Água", "Pacote de açúcar",
-    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
+    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"
+]
 
 const freezerProducts = ["Iogurte Natural", "Posta de Salmão", "Lombo de Porco", "Peito de Frango", "Picanha",
-    "Cenoura", "Tomate", "Maçã", "Leite"]
+    "Cenoura", "Tomate", "Maçã", "Leite"
+]
 
 const despensaProducts = ["Barra de Chocolate", "Cereais", "Azeite", "Pacote de Bolacha", "Leite Condensado", "Lata de Atum",
     "Pacote de Arroz", "Pacote de Massa", "Batata", "Garrafa de Água", "Pacote de açúcar",
-    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"]
+    "Pacote de Sal", "Conserva de Feijão", "Conserva de Grão", "Saco de Café", "Doce de Morango"
+]
 
 let productsList = null;
 
@@ -67,21 +70,20 @@ function dateGenerator(product) {
     result = result + todaysDate.getFullYear() + "/" + (todaysDate.getMonth() + 1) + "/" + todaysDate.getDate();
     if (freezerProducts.indexOf(product) >= 0) {
 
-    }
-    else {
+    } else {
 
     }
     return result;
 }
+
 function principal() {
-    //addProducts();
     productsList = JSON.parse(localStorage.getItem("productsList")) || [];
-    getOrderBy();
     if (productsList.length == 0) {
         productsList = getProductsList(allProductsNameList);
         localStorage.setItem("productsList", JSON.stringify(productsList));
     }
 
+    getOrderBy()
     getAlarms();
     document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
     defineEventHandlers();
@@ -90,6 +92,19 @@ function principal() {
 function defineEventHandlers() {
     document.getElementById(OPTIONS_BUTTON).addEventListener("click", showWindow);
     document.getElementById(CLOSE_OPTIONS_WINDOW_BTN).addEventListener("click", closeWindow);
+    document.getElementById("produtosDespensa").addEventListener("click", function () {
+        localStorage.setItem("Mostrar items:", "Despensa");
+        displayDespensaHTML()
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
+        defineEventHandlers();
+    });
+    document.getElementById("produtosFrigorifico").addEventListener("click", function () {
+        localStorage.setItem("Mostrar items:", "Frigorifico");
+        displayDespensaHTML();
+        document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
+        defineEventHandlers();
+    });
+
     document.getElementById("quantidade").addEventListener("click", function () {
         localStorage.setItem("Ordenar por:", "quantidade");
         displayDespensaHTML();
@@ -102,8 +117,6 @@ function defineEventHandlers() {
         document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
         defineEventHandlers();
     });
-
-
     for (let i = 0; i < productsList.length; i++) {
         let product = productsList[i];
         let productElement = document.getElementById("td_" + product.id);
@@ -139,7 +152,7 @@ function defineEventHandlers() {
                 div += '<br>';
                 div += '<button id="comprarBtn" style="margin-top: 10px;">Comprar</button>';
                 document.getElementById(produtoPopup).innerHTML = div;
-                document.getElementById("comprarBtn").addEventListener("click", function(){
+                document.getElementById("comprarBtn").addEventListener("click", function () {
                     product.quantity = parseInt(document.getElementById("buyInput").value) + parseInt(product.quantity);
                     product.quantity = parseInt(product.quantity);
                     document.getElementById("comprarProdutoDiv").style.display = 'none';
@@ -156,15 +169,48 @@ function displayDespensaHTML() {
     let html = '<table id="tabelaProdutosDespensa">';
     let i = 0;
     let selectedOrder = [];
-    if (document.getElementById("quantidade").checked == true) {
-        let orderedProductsQuantity = orderByQuantity(productsList);
-        selectedOrder = orderedProductsQuantity;
-    } else if (document.getElementById("dataValidade").checked == true) {
-        let orderedProductsValidity = orderByValidity(productsList);
-        selectedOrder = orderedProductsValidity;
+    if (document.getElementById("produtosDespensa").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(despensaProducts);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(despensaProducts);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = despensaProducts;
+        }
+    } else if (document.getElementById("produtosFrigorifico").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(freezerProducts);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(freezerProducts);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = freezerProducts;
+        }
+    } else if (document.getElementById("produtosFrigorifico").checked == true && document.getElementById("produtosDespensa").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(productsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(productsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = productsList;
+        }
     } else {
-        selectedOrder = productsList;
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(productsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(productsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = productsList;
+        }
     }
+
     for (let row = 0; row < 5; row++) {
         html += "<tr>";
         for (let column = 0; column < 5; column++) {
@@ -172,8 +218,7 @@ function displayDespensaHTML() {
             if (i < selectedOrder.length) {
                 html += "<td class='tdProduto' id='td_" + product.id + "'>\
                     <img class='produto' id='" + product.id + "' src=imagens/" + product.id + ".png><br>" + product.name + "<br>Quantidade: " + product.quantity + "<br> Validade: " + product.expireDate + "</td>";
-            }
-            else {
+            } else {
                 html += "<td></td>";
             }
             i++;
@@ -239,8 +284,7 @@ function getAlarms() {
     }
 }
 
-function defineOrderOfProducts() {
-}
+function defineOrderOfProducts() {}
 
 function orderByQuantity(productsList) {
 
