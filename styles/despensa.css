@@ -135,6 +135,12 @@ h4 {
     color: #666666;
 }
 
+#closeBtnPosition{
+    position: inline;
+    float: right;
+    margin-bottom: 20px;
+}
+
 .optionsDiv {
     display: inline-block;
     border: 2px solid black;

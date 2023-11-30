@@ -148,7 +148,7 @@ function defineEventHandlers() {
                 div += '<h3>' + product.name + '</h3>';
                 div += "<center><img src='" + imagemProduto + "' width=100 height=100'></img></center>";
                 div += '<br>';
-                div += "<input type=number min=1 max=30 id='buyInput'></input>";
+                div += "<input type=number min=1 max=30  value=1 id='buyInput'></input>";
                 div += '<br>';
                 div += '<button id="comprarBtn" style="margin-top: 10px;">Comprar</button>';
                 document.getElementById(produtoPopup).innerHTML = div;
