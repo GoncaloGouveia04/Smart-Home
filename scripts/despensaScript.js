@@ -118,20 +118,17 @@ function getProductID(product) {
 function dateGenerator(product) {
     let todaysDate = new Date();
     let result = "";
-    result =
-        result +
-        todaysDate.getFullYear() +
-        "/" +
-        (todaysDate.getMonth() + 1) +
-        "/" +
-        todaysDate.getDate();
+    result = result + todaysDate.getFullYear() + "/" + (todaysDate.getMonth() + 1) + "/" + todaysDate.getDate();
     if (freezerProducts.indexOf(product) >= 0) {
-    } else {
     }
     return result;
 }
 
 function principal() {
+
+
+    getOrderBy();
+    getAlarms();
     productsList = JSON.parse(localStorage.getItem("productsList")) || [];
     if (productsList.length == 0) {
         productsList = getProductsList(allProductsNameList);
@@ -147,11 +144,9 @@ function principal() {
         freezerProductsList = getProductsList(freezerProducts);
         localStorage.setItem("freezerProductsList", JSON.stringify(freezerProductsList));
     }
-
-    getOrderBy();
-    getAlarms();
     document.getElementById("tabelaDespensa").innerHTML = displayDespensaHTML();
     defineEventHandlers();
+
 }
 
 function defineEventHandlers() {
@@ -310,38 +305,32 @@ function defineEventHandlers() {
                 div += "<br>";
                 div += "<center><button id='comprarProduto'>Comprar</button></center>";
                 document.getElementById(produtoPopup).innerHTML = div + "</div>";
-                document
-                    .getElementById("comprarProduto")
-                    .addEventListener("click", function () {
-                        document.getElementById("productInformation").style.display = "none";
-                        let produtoPopup = "comprarProdutoDiv";
-                        let div = '<div id="buyProductDiv">';
-                        div +=
-                            "<button onclick='document.getElementById(\"comprarProdutoDiv\").style.display = \"none\";' style='float: right;'>Fechar</button>";
-                        div += "<br>";
-                        div += "<h3>" + product.name + "</h3>";
-                        div +=
-                            "<center><img src='" +
-                            imagemProduto +
-                            "' width=100 height=100'></img></center>";
-                        div += "<br>";
-                        div +=
-                            "<input type=number min=1 max=30  value=1 id='buyInput'></input>";
-                        div += "<br>";
-                        div +=
-                            '<button id="comprarBtn" style="margin-top: 10px;">Comprar</button>';
-                        document.getElementById(produtoPopup).innerHTML = div;
-                        document
-                            .getElementById("comprarBtn")
-                            .addEventListener("click", function () {
-                                product.quantity =
-                                    parseInt(document.getElementById("buyInput").value) +
-                                    parseInt(product.quantity);
-                                product.quantity = parseInt(product.quantity);
-                                document.getElementById("comprarProdutoDiv").style.display =
-                                    "none";
-                            });
+                document.getElementById("comprarProduto").addEventListener("click", function () {
+                    document.getElementById("productInformation").style.display = "none";
+                    let produtoPopup = "comprarProdutoDiv";
+                    let div = '<div id="buyProductDiv">';
+                    div +=
+                        "<button onclick='document.getElementById(\"comprarProdutoDiv\").style.display = \"none\";' style='float: right;'>Fechar</button>";
+                    div += "<br>";
+                    div += "<h3>" + product.name + "</h3>";
+                    div +=
+                        "<center><img src='" +
+                        imagemProduto +
+                        "' width=100 height=100'></img></center>";
+                    div += "<br>";
+                    div +=
+                        "<input type=number min=1 max=30  value=1 id='buyInput'></input>";
+                    div += "<br>";
+                    div +=
+                        '<button id="comprarBtn" style="margin-top: 10px;">Comprar</button>';
+                    document.getElementById(produtoPopup).innerHTML = div;
+                    document.getElementById("comprarBtn").addEventListener("click", function () {
+                        product.quantity = parseInt(document.getElementById("buyInput").value) + parseInt(product.quantity);
+                        product.quantity = parseInt(product.quantity);
+                        document.getElementById("comprarProdutoDiv").style.display = "none";
+
                     });
+                });
             });
         }
     } else if (document.getElementById("produtosFrigorifico").checked == true) {
@@ -406,12 +395,10 @@ function defineEventHandlers() {
                         document
                             .getElementById("comprarBtn")
                             .addEventListener("click", function () {
-                                product.quantity =
-                                    parseInt(document.getElementById("buyInput").value) +
-                                    parseInt(product.quantity);
+                                product.quantity = parseInt(document.getElementById("buyInput").value) + parseInt(product.quantity);
                                 product.quantity = parseInt(product.quantity);
-                                document.getElementById("comprarProdutoDiv").style.display =
-                                    "none";
+                                document.getElementById("comprarProdutoDiv").style.display ="none";
+
                             });
                     });
             });
