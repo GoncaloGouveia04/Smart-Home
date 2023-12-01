@@ -344,7 +344,7 @@ function defineEventHandlers() {
                     });
             });
         }
-    }else if(document.getElementById("produtosFrigorifico").checked == true){
+    } else if (document.getElementById("produtosFrigorifico").checked == true) {
         for (let i = 0; i < freezerProductsList.length; i++) {
             let product = freezerProductsList[i];
             let productElement = document.getElementById("td_" + product.id);
@@ -498,16 +498,49 @@ function displayDespensaHTML() {
     let html = '<table id="tabelaProdutosDespensa">';
     let i = 0;
     let selectedOrder = [];
-    if (document.getElementById("quantidade").checked == true) {
-        let orderedProductsQuantity = orderByQuantity(productsList);
-        selectedOrder = orderedProductsQuantity;
-    } else if (document.getElementById("dataValidade").checked == true) {
-        let orderedProductsValidity = orderByValidity(productsList);
-        selectedOrder = orderedProductsValidity;
+    if (document.getElementById("produtosDespensa").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(despensaProductsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(despensaProductsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = despensaProductsList;
+        }
+    } else if (document.getElementById("produtosFrigorifico").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(freezerProductsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(freezerProductsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = freezerProductsList;
+        }
     } else {
-        selectedOrder = productsList;
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(productsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(productsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = productsList;
+        }
     }
 
+    if (document.getElementById("produtosDespensa").checked == true && document.getElementById("produtosFrigorifico").checked == true) {
+        if (document.getElementById("quantidade").checked == true) {
+            let orderedProductsQuantity = orderByQuantity(productsList);
+            selectedOrder = orderedProductsQuantity;
+        } else if (document.getElementById("dataValidade").checked == true) {
+            let orderedProductsValidity = orderByValidity(productsList);
+            selectedOrder = orderedProductsValidity;
+        } else {
+            selectedOrder = productsList;
+        }
+    }
     for (let row = 0; row < 5; row++) {
         html += "<tr>";
         for (let column = 0; column < 5; column++) {
