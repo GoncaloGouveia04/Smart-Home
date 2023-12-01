@@ -397,7 +397,7 @@ function defineEventHandlers() {
                             .addEventListener("click", function () {
                                 product.quantity = parseInt(document.getElementById("buyInput").value) + parseInt(product.quantity);
                                 product.quantity = parseInt(product.quantity);
-                                document.getElementById("comprarProdutoDiv").style.display ="none";
+                                document.getElementById("comprarProdutoDiv").style.display = "none";
 
                             });
                     });
