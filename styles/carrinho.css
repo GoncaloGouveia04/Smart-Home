@@ -1,0 +1,233 @@
+@font-face {
+    font-family: "WhaleTried";
+    src: url(../imagens/WhaleITriedRegular-xWq0.ttf), format("truetype");
+}
+
+* {
+    font-family: "WhaleTried";
+}
+
+html {
+    background-color: black;
+}
+
+#ecra {
+    width: 1280px;
+    height: 780px;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 70px;
+}
+
+#backBtn {
+    float: left;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#backBtn:hover {
+    color: white;
+    background-color: black;
+}
+
+.removeItem {
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+}
+
+.removeItem:hover {
+    color: white;
+    background-color: black;
+}
+
+#buyBtnPosition {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#buyBtn {
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 24px;
+    border: 0.1px solid black;
+    width: 200px;
+}
+
+#buyBtn:hover {
+    color: white;
+    background-color: black;
+}
+
+#carrinho {
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+    width: 1200px;
+    height: 500px;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin-top: -50px;
+}
+
+#carrinho h3 {
+    text-align: center;
+}
+
+.produto {
+    height: fit-content;
+    text-align: center;
+    margin: 20px;
+}
+
+input {
+    font-size: 24px;
+    width: 3em;
+}
+
+p {
+    margin-left: -300px;
+    font-size: 24px;
+}
+
+.produto {
+    display: grid;
+    grid-template-columns: repeat(4, 1.5fr);
+    gap: 20px;
+}
+
+.quantity {
+    display: flex;
+    width: 160px;
+}
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.quantity {
+    margin-left: -80px;
+}
+
+.quantity input,
+.quantity button {
+    width: 50px;
+    padding: .5em;
+    font-size: 1.2rem;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    background: white;
+    border: 1px solid #aaa;
+}
+
+.quantity input {
+    border-left: none;
+    border-right: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#paymentPopup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+#popupContent {
+    text-align: center;
+}
+
+#closePopupBtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+#paypalBtn, #creditCardBtn, #mbwayBtn {
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+#openPopupBtn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.paymentFields {
+    display: none;
+    margin-top: 20px;
+}
+
+.paymentFields label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.paymentFields input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+#openPopupBtn {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button{
+    border-radius: 5px;
+    font-size: 18px;
+    border: 0.1px solid black;
+}
+
+button:hover{
+    background-color: black;
+    color: white;
+}
+
+#price{
+    margin: 10px;
+}
+
+#total{
+    font-size: 18px;
+}

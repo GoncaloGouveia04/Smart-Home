@@ -1,6 +1,10 @@
-*{
-    font-family: "DejaVu Serif";
-    font-size: 24px;
+@font-face {
+    font-family: "WhaleTried";
+    src: url(../imagens/WhaleITriedRegular-xWq0.ttf), format("truetype");
+}
+
+* {
+    font-family: "WhaleTried";
 }
 
 html{
@@ -14,13 +18,17 @@ html{
     margin-left: auto;
     margin-right: auto;
     background-color: white;
+    background-image: url("../imagens/estores_background.gif");
+    background-repeat: no-repeat;
+    background-position: right;
 }
 
 #estoresGrid{
+    margin-left: 50px;
     margin-top: 50px;
     display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 20% 25% 25%;
+    grid-template-rows: 22% 22% 22% 22%;
     grid-row-gap: 20px;
 }
 
@@ -65,7 +73,7 @@ html{
 h1{
     margin-top: 50px;
     text-align: center;
-    font-size: 30px;
+    font-size: 90px;
 }
 
 #estoresGrid h3{
@@ -75,4 +83,16 @@ h1{
 
 .horas input{
     margin: 5px;
+}
+
+.nameSection {
+    font-size: 40px;
+}
+
+.status{
+    font-size: 25px;
+}
+
+.abrirFechar{
+    font-size: 25px;
 }

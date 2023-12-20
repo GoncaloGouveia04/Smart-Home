@@ -1,18 +1,25 @@
-* {
-    font-family: "DejaVu Serif";
+@font-face {
+    font-family: "WhaleTried";
+    src: url(../imagens/WhaleITriedRegular-xWq0.ttf), format("truetype");
 }
 
+* {
+    font-family: "WhaleTried";
+}
+
+
 h1{
+    font-size: 100px;
     text-align: center;
-    margin-top:50px ;
+    margin-top:50px;
 }
 
 #gridAC {
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: auto auto auto auto;
+    grid-template-columns: 18% 28% 25% 20%;
+    grid-template-rows: 30% 30% 30% 30%;
     margin-top: 100px;
-    margin-left: auto;
+    margin-left: 100px;
     margin-right: auto;
 }
 
@@ -21,7 +28,7 @@ h1{
     border-radius: 5px;
     font-size: 24px;
     border: 0.1px solid black;
-    width: 200px;
+    width: 100px;
 }
 
 #gridAC button:hover {
@@ -47,6 +54,9 @@ html {
     margin-left: auto;
     margin-right: auto;
     background-color: white;
+    background-image: url("../imagens/ac-background.gif");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 #backBtnPosition {
@@ -67,7 +77,8 @@ html {
 }
 
 .sectionName {
-    font-size: 24px;
+    font-size: 55px;
+    font-weight: bold;
     margin-left: 100px;
     margin-right: 100px;
 }
@@ -77,3 +88,4 @@ html {
     margin-right: 100px;
     margin-bottom: 50px;
 }
+

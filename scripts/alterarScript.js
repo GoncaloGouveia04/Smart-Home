@@ -21,6 +21,7 @@ function defineEventHandlers() {
     temperatureSlider.addEventListener('input', updateTemperatureDisplay);
     speedSlider.addEventListener('input', updateSpeedDisplay);
     guardarBtn.addEventListener("click", saveOptions);
+    document.getElementById("backBtn").addEventListener("click", back);
 }
 
 function updateTemperatureDisplay() {
@@ -43,7 +44,7 @@ function saveID(clicked_id) {
 function saveOptions() {
     var velocidade = speedSlider.value;
     var temperatura = temperatureSlider.value;
-    var currentDivision = sessionStorage.getItem("currentDivision");
+    var currentDivision = sessionStorage.getItem("currentDivision") || localStorage.getItem("currentDivision");
     if (currentDivision == "alterarSala1") {
         sessionStorage.setItem("Velocidade Sala1", velocidade);
         sessionStorage.setItem("Temperatura Sala1", temperatura + '°C');
@@ -67,27 +68,33 @@ function saveOptions() {
 function getOptions(){
     var currentDivision = sessionStorage.getItem("currentDivision");
     if (currentDivision == "alterarSala1") {
-        speedSlider.value = sessionStorage.getItem("Velocidade Sala1") || 3;
         temperatureSlider.value = sessionStorage.getItem("Temperatura Sala1").slice(0,2) || 25;
-        speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Sala1") || 3;
+        speedSlider.value = sessionStorage.getItem("Velocidade Sala1") || temperatureSlider;
+        speedDisplay.innerHTML = parseInt(sessionStorage.getItem("Velocidade Sala1")) || 3;
         temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Sala1") || 25 + "°C";
     }
     else if (currentDivision == "alterarQuarto") {
-        speedSlider.value = sessionStorage.getItem("Velocidade Quarto") || 3;
+        speedSlider.value = parseInt(sessionStorage.getItem("Velocidade Quarto")) || 3;
         temperatureSlider.value = sessionStorage.getItem("Temperatura Quarto").slice(0,2) || 25;
         speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Quarto") || 3;
         temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Quarto") || 25 + "°C"; 
     }
     else if (currentDivision == "alterarCozinha") {
-        speedSlider.value = sessionStorage.getItem("Velocidade Cozinha") || 3;
+        speedSlider.value = parseInt(sessionStorage.getItem("Velocidade Cozinha")) || 3;
         temperatureSlider.value = sessionStorage.getItem("Temperatura Cozinha").slice(0,2) || 25;
         speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Cozinha") || 3;
         temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Cozinha") || 25 + "°C";
     }
     else {
-        speedSlider.value = sessionStorage.getItem("Velocidade Sala2") || 3;
+        speedSlider.value = parseSlider(sessionStorage.getItem("Velocidade Sala2")) || 3;
         temperatureSlider.value = sessionStorage.getItem("Temperatura Sala2").slice(0,2) || 25;
         speedDisplay.innerHTML = sessionStorage.getItem("Velocidade Sala2") || 3;
         temperatureDisplay.innerHTML = sessionStorage.getItem("Temperatura Sala2") || 25 + "°C";
+    }
+}
+
+function back(){
+    if(confirm("Tem a certeza que quer voltar sem guardar?")){
+        window.location.href = "acPage.html";
     }
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SmartHome: Carrinho</title>
+    <link rel="stylesheet" href="styles/carrinho.css">
+</head>
+<body>
+    <div id="ecra">
+        <div id="backTbnPosition">
+            <button id="backBtn" onclick="window.location.href = 'despensaPage.html'">Voltar</button>
+        </div>
+        <div id="paymentPopup">
+            <div id="popupContent">
+                <button id="closePopupBtn">Fechar</button>
+                <h2>Escolha seu método de pagamento</h2>
+                <button id="paypalBtn">Pagar com PayPal</button>
+                <button id="creditCardBtn">Pagar com Cartão de Crédito</button>
+                <button id="mbwayBtn">MB WAY</button>
+                <div id="paypalFields" class="paymentFields">
+                    <label for="paypalEmail">Email PayPal:</label>
+                    <input type="email" id="paypalEmail" placeholder="Digite seu email PayPal">
+                    <button onclick="payProducts()" id="confirmarBtn">Pagar com PayPal</button>
+                </div>
+                <div id="creditCardFields" class="paymentFields">
+                    <label for="cardNumber">Número do Cartão:</label>
+                    <input type="text" id="cardNumber" placeholder="Digite o número do cartão">
+                    <label for="expirationDate">Data de Expiração:</label>
+                    <input type="month" id="expirationDate" placeholder="MM/AAAA" min="2020-08">
+                    <button onclick="payProducts()" id="confirmarBtn">Pagar com Cartão de Crédito</button>
+                </div>
+        
+                <div id="mbwayFields" class="paymentFields">
+                    <label for="mbwayNumber">Número MBWay:</label>
+                    <input type="text" id="mbwayNumber" placeholder="Digite o número MBWay">
+                    <button onclick="payProducts()" id="confirmarBtn">Pagar com MBWay</button>
+                </div>
+                <div id="price">
+                    <span id="total"></span>
+                </div>
+            </div>
+        </div>
+        <h1>Carrinho</h1>
+        <div id="carrinho"></div>
+        <div id="buyBtnPosition">
+            <button id="buyBtn">Comprar</button>
+        </div>
+    </div>
+</body>
+<script src="scripts/carrinho.js"></script>
+</html>
